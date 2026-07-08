@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peta Kelas 9D — Kuesioner Awal Tahun</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#16213E;
+    --navy-soft:#2B3A67;
+    --paper:#F6F7FB;
+    --card:#FFFFFF;
+    --gold:#E3A008;
+    --gold-soft:#FCE7B8;
+    --teal:#0F766E;
+    --ink:#1B1F2A;
+    --ink-soft:#5B6478;
+    --line:#E3E6EE;
+    --danger:#B3261E;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    letter-spacing:-0.01em;
+  }
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+    letter-spacing:0.02em;
+  }
+  /* ---------- Header / hero ---------- */
+  header.hero{
+    background:linear-gradient(160deg,var(--navy) 0%, var(--navy-soft) 100%);
+    color:#fff;
+    padding:36px 20px 28px;
+    position:relative;
+    overflow:hidden;
+  }
+  header.hero::after{
+    content:"";
+    position:absolute; right:-60px; top:-60px;
+    width:220px; height:220px; border-radius:50%;
+    background:radial-gradient(circle, rgba(227,160,8,0.25), transparent 70%);
+  }
+  .hero-inner{max-width:720px; margin:0 auto; position:relative;}
+  .eyebrow{
+    font-size:12px; text-transform:uppercase; letter-spacing:0.14em;
+    color:var(--gold); font-family:'IBM Plex Mono', monospace; font-weight:500;
+  }
+  .hero h1{font-size:28px; font-weight:600; margin:10px 0 8px; line-height:1.25;}
+  .hero p{font-size:14.5px; color:#C9CEE0; line-height:1.6; margin:0; max-width:56ch;}
+
+  /* ---------- Path progress ---------- */
+  .path-wrap{max-width:720px; margin:22px auto 0; padding:0 20px;}
+  .path-track{
+    display:flex; align-items:center; overflow-x:auto; gap:0;
+    padding-bottom:6px; scrollbar-width:none;
+  }
+  .path-track::-webkit-scrollbar{display:none;}
+  .stop{
+    flex:0 0 auto; width:22px; height:22px; border-radius:50%;
+    background:rgba(255,255,255,0.14); border:2px solid rgba(255,255,255,0.28);
+    display:flex; align-items:center; justify-content:center;
+    font-size:10px; font-weight:600; color:#C9CEE0; font-family:'IBM Plex Mono', monospace;
+    transition:all .25s ease; flex-shrink:0;
+  }
+  .stop.done{background:var(--gold); border-color:var(--gold); color:var(--navy);}
+  .stop.active{background:#fff; border-color:#fff; color:var(--navy); transform:scale(1.15);}
+  .connector{flex:1 1 16px; min-width:10px; height:2px; background:rgba(255,255,255,0.2);}
+  .connector.done{background:var(--gold);}
+  .path-label{margin-top:8px; font-size:12px; color:var(--gold-soft); font-family:'IBM Plex Mono', monospace;}
+
+  /* ---------- Main card ---------- */
+  main{max-width:720px; margin:-14px auto 60px; padding:0 20px;}
+  .card{
+    background:var(--card); border-radius:18px; padding:28px 24px 26px;
+    box-shadow:0 10px 30px rgba(22,33,62,0.08); border:1px solid var(--line);
+  }
+  .section-tag{
+    font-size:11.5px; color:var(--teal); font-family:'IBM Plex Mono', monospace;
+    text-transform:uppercase; letter-spacing:0.1em; margin-bottom:6px; display:block;
+  }
+  .card h2{font-size:21px; margin:0 0 4px; color:var(--navy); font-weight:600;}
+  .card .section-desc{font-size:13.5px; color:var(--ink-soft); margin:0 0 20px; line-height:1.55;}
+  .confidential{
+    display:inline-flex; align-items:center; gap:6px; font-size:12px;
+    background:#FDF1F0; color:var(--danger); border:1px solid #F4CFCC;
+    padding:5px 10px; border-radius:20px; margin-bottom:16px; font-weight:600;
+  }
+
+  .field{margin-bottom:22px;}
+  .field label.q{display:block; font-size:14.5px; font-weight:600; margin-bottom:10px; color:var(--ink); line-height:1.45;}
+  .field .hint{font-size:12.5px; color:var(--ink-soft); margin:-6px 0 10px; font-weight:400;}
+  input[type=text], input[type=tel], input[type=time], input[type=number], select, textarea{
+    width:100%; padding:11px 13px; font-size:14.5px; font-family:inherit;
+    border:1.5px solid var(--line); border-radius:10px; background:#FBFCFE;
+    color:var(--ink); transition:border-color .15s ease;
+  }
+  textarea{min-height:80px; resize:vertical;}
+  input:focus, select:focus, textarea:focus{
+    outline:none; border-color:var(--teal); background:#fff;
+  }
+  .options{display:flex; flex-direction:column; gap:8px;}
+  .opt{
+    display:flex; align-items:center; gap:10px; padding:11px 13px;
+    border:1.5px solid var(--line); border-radius:10px; cursor:pointer;
+    font-size:14px; background:#FBFCFE; transition:all .15s ease;
+  }
+  .opt:hover{border-color:#C9CEE0;}
+  .opt input{accent-color:var(--teal); width:16px; height:16px; flex-shrink:0;}
+  .opt.checked{border-color:var(--teal); background:#F0FAF8;}
+
+  .scale-row{display:flex; gap:6px; justify-content:space-between;}
+  .scale-btn{
+    flex:1; text-align:center; padding:10px 4px; border-radius:10px;
+    border:1.5px solid var(--line); background:#FBFCFE; cursor:pointer;
+    font-size:13px; font-weight:600; color:var(--ink-soft); transition:all .15s ease;
+  }
+  .scale-btn.checked{background:var(--navy); border-color:var(--navy); color:#fff;}
+  .scale-labels{display:flex; justify-content:space-between; font-size:11px; color:var(--ink-soft); margin-top:6px;}
+
+  /* ---------- Nav buttons ---------- */
+  .nav-row{display:flex; justify-content:space-between; align-items:center; margin-top:26px; gap:12px;}
+  button{
+    font-family:inherit; font-size:14.5px; font-weight:600; cursor:pointer;
+    border-radius:11px; padding:12px 20px; border:none; transition:all .15s ease;
+  }
+  .btn-primary{background:var(--navy); color:#fff;}
+  .btn-primary:hover{background:var(--navy-soft);}
+  .btn-ghost{background:transparent; color:var(--ink-soft); border:1.5px solid var(--line);}
+  .btn-ghost:hover{border-color:#C9CEE0;}
+  .btn-primary:disabled{opacity:0.5; cursor:not-allowed;}
+
+  .required-mark{color:var(--danger);}
+
+  /* ---------- Intro / outro screens ---------- */
+  .screen-center{text-align:center; padding:10px 4px 6px;}
+  .screen-center h2{font-size:22px; margin-bottom:10px;}
+  .screen-center p{font-size:14.5px; color:var(--ink-soft); line-height:1.65; margin:0 0 20px;}
+  .badge-list{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom:22px;}
+  .badge{font-size:12px; background:var(--gold-soft); color:#7A5600; padding:6px 12px; border-radius:20px; font-weight:600;}
+  .name-input{max-width:280px; margin:0 auto 20px;}
+
+  .status-msg{font-size:13px; text-align:center; margin-top:14px; color:var(--ink-soft);}
+  .status-msg.error{color:var(--danger);}
+  .success-icon{
+    width:60px; height:60px; border-radius:50%; background:var(--teal); color:#fff;
+    display:flex; align-items:center; justify-content:center; margin:0 auto 18px; font-size:28px;
+  }
+
+  footer{max-width:720px; margin:0 auto 40px; padding:0 24px; text-align:center; font-size:12px; color:var(--ink-soft);}
+
+  @media (max-width:480px){
+    .card{padding:22px 18px 20px; border-radius:14px;}
+    .hero h1{font-size:24px;}
+    .scale-row{gap:4px;}
+    .scale-btn{padding:9px 2px; font-size:12px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Kelas IX D · Tahun Ajaran Baru</span>
+    <h1>Peta Kelas 9D</h1>
+    <p>Sebelum satu tahun ini dimulai, wali kelasmu ingin mengenalmu lebih dulu. Tidak ada jawaban benar atau salah — jawab saja sejujurnya. Beberapa jawaban bersifat rahasia dan hanya dibaca oleh wali kelas.</p>
+  </div>
+</header>
+
+<div class="path-wrap">
+  <div class="path-track" id="pathTrack"></div>
+  <div class="path-label" id="pathLabel">Langkah 0 dari 15</div>
+</div>
+
+<main>
+  <div class="card" id="card"></div>
+</main>
+
+<footer>Jawabanmu tersimpan otomatis di perangkat ini sampai kamu menekan “Kirim Jawaban”.</footer>
+
+<script>
+/* ============ KONFIGURASI ============ */
+const CONFIG = {
+  // Tempel URL Web App Google Apps Script kamu di sini setelah deploy
+  SCRIPT_URL: "TEMPEL_URL_WEB_APP_APPS_SCRIPT_DI_SINI"
+};
+
+/* ============ DATA PERTANYAAN ============ */
+const SECTIONS = [
+  { tag:"01", title:"Data Diri", desc:"Supaya kami bisa saling mengenal dan berkomunikasi dengan lebih mudah.", fields:[
+    {id:"nama_lengkap", type:"text", q:"Nama lengkap", required:true},
+    {id:"nama_panggilan", type:"text", q:"Nama panggilan yang kamu suka", required:true},
+    {id:"tempat_tinggal", type:"text", q:"Tempat tinggal (desa/kelurahan)", required:true},
+    {id:"tinggal_bersama", type:"radio", q:"Tinggal bersama siapa di rumah?", options:["Orang tua lengkap","Ibu saja","Ayah saja","Nenek / Kakek","Saudara","Lainnya"], required:true},
+    {id:"anak_ke", type:"text", q:"Anak ke berapa, dari berapa bersaudara?", hint:"Contoh: anak ke-2 dari 3 bersaudara"},
+    {id:"jarak_rumah", type:"radio", q:"Jarak rumah ke sekolah", options:["Kurang dari 1 km","1–3 km","3–5 km","Lebih dari 5 km"], required:true},
+    {id:"transportasi", type:"radio", q:"Transportasi ke sekolah", options:["Jalan kaki","Sepeda","Sepeda motor sendiri","Diantar","Angkutan umum","Lainnya"], required:true},
+    {id:"no_hp_siswa", type:"tel", q:"Nomor HP kamu (jika ada)"},
+    {id:"no_hp_ortu", type:"tel", q:"Nomor HP orang tua / wali", required:true},
+  ]},
+  { tag:"02", title:"Belajar di Rumah", desc:"Membantu kami tahu apakah kamu butuh dukungan belajar tambahan.", fields:[
+    {id:"tempat_belajar_nyaman", type:"radio", q:"Apakah kamu punya tempat belajar yang nyaman di rumah?", options:["Ya","Tidak","Kadang-kadang"], required:true},
+    {id:"jam_belajar", type:"radio", q:"Berapa lama biasanya kamu belajar di rumah setiap hari?", options:["Kurang dari 30 menit","30–60 menit","1–2 jam","Lebih dari 2 jam"], required:true},
+    {id:"pendamping_belajar", type:"radio", q:"Siapa yang paling sering membantu saat kamu kesulitan belajar?", options:["Orang tua","Kakak","Belajar sendiri","Tidak ada yang membantu","Lainnya"], required:true},
+    {id:"gangguan_belajar", type:"textarea", q:"Apa yang paling sering mengganggu konsentrasimu saat belajar?"},
+  ]},
+  { tag:"03", title:"Minat & Potensi", desc:"Berguna saat kami membagi peran dalam proyek, lomba, atau kegiatan kelas.", fields:[
+    {id:"mapel_favorit", type:"text", q:"Mata pelajaran favoritmu", required:true},
+    {id:"mapel_sulit", type:"text", q:"Mata pelajaran yang paling sulit menurutmu"},
+    {id:"hobi", type:"text", q:"Hobimu", required:true},
+    {id:"ekskul_diminati", type:"text", q:"Ekstrakurikuler yang ingin kamu ikuti"},
+    {id:"prestasi", type:"textarea", q:"Prestasi yang pernah kamu raih (jika ada)"},
+    {id:"kebanggaan_diri", type:"textarea", q:"Hal yang paling kamu banggakan dari dirimu sendiri"},
+    {id:"cita_cita", type:"text", q:"Cita-citamu", required:true},
+  ]},
+  { tag:"04", title:"Gaya Belajar", desc:"Setiap orang punya cara berbeda untuk memahami pelajaran.", fields:[
+    {id:"gaya_belajar", type:"radio", q:"Saya lebih mudah memahami pelajaran jika...", options:["Melihat gambar / video","Mendengarkan penjelasan","Mencoba langsung","Berdiskusi dengan teman"], required:true},
+    {id:"preferensi_belajar", type:"radio", q:"Kamu lebih nyaman belajar sendiri atau kelompok?", options:["Sendiri","Kelompok","Keduanya sama saja"], required:true},
+    {id:"suka_bertanya", type:"radio", q:"Apakah kamu suka bertanya saat tidak paham pelajaran?", options:["Ya","Kadang-kadang","Tidak, saya malu bertanya"], required:true},
+  ]},
+  { tag:"05", title:"Kondisi Emosional", desc:"Jawaban ini membantu kami mengenali siapa yang mungkin butuh perhatian lebih.", confidential:true, fields:[
+    {id:"kondisi_emosional", type:"radio", q:"Selama satu bulan terakhir, secara umum saya merasa...", options:["Sangat bersemangat","Cukup bersemangat","Biasa saja","Sering lelah","Sering cemas"], required:true},
+    {id:"cerita_masalah", type:"radio", q:"Ketika punya masalah, saya biasanya bercerita kepada...", options:["Orang tua","Guru","Teman","Kakak","Tidak bercerita kepada siapa pun"], required:true},
+  ]},
+  { tag:"06", title:"Hubungan Sosial", desc:"Beri nilai 1 (sangat tidak setuju) sampai 5 (sangat setuju) untuk tiap pernyataan.", fields:[
+    {id:"mudah_berteman", type:"scale", q:"Saya mudah berteman dengan orang baru"},
+    {id:"nyaman_kelompok", type:"scale", q:"Saya nyaman bekerja dalam kelompok"},
+    {id:"pernah_konflik", type:"scale", q:"Saya pernah mengalami konflik dengan teman"},
+    {id:"suka_menyendiri", type:"scale", q:"Saya lebih suka menyendiri daripada berkumpul"},
+  ]},
+  { tag:"07", title:"Kedisiplinan", desc:"Jawab sejujurnya, ini bukan penilaian — tapi bahan refleksi bersama.", fields:[
+    {id:"terlambat_bangun", type:"freq", q:"Seberapa sering kamu terlambat bangun pagi?"},
+    {id:"lupa_tugas", type:"freq", q:"Seberapa sering kamu lupa mengerjakan tugas?"},
+    {id:"lupa_perlengkapan", type:"freq", q:"Seberapa sering kamu lupa membawa perlengkapan sekolah?"},
+    {id:"main_hp_larut", type:"freq", q:"Seberapa sering kamu bermain HP sampai larut malam?"},
+  ]},
+  { tag:"08", title:"Penggunaan Gadget", desc:"Sering berkaitan dengan konsentrasi belajar dan pola tidur.", fields:[
+    {id:"jam_hp", type:"radio", q:"Rata-rata berapa jam kamu menggunakan HP setiap hari?", options:["Kurang dari 1 jam","1–3 jam","3–5 jam","Lebih dari 5 jam"], required:true},
+    {id:"penggunaan_hp_utama", type:"radio", q:"HP paling sering kamu gunakan untuk...", options:["Belajar","Media sosial","Game","YouTube","Lainnya"], required:true},
+    {id:"jam_tidur", type:"time", q:"Biasanya kamu tidur pukul berapa?"},
+  ]},
+  { tag:"09", title:"Harapan ke Wali Kelas", desc:"Jawabanmu di sini sering sangat berharga bagi kami.", fields:[
+    {id:"harapan_wali_kelas", type:"textarea", q:"Apa yang kamu harapkan dari wali kelasmu tahun ini?", required:true},
+    {id:"guru_nyaman", type:"textarea", q:"Guru seperti apa yang membuatmu nyaman belajar?"},
+  ]},
+  { tag:"10", title:"Target Tahun Ini", desc:"Boleh pilih lebih dari satu.", fields:[
+    {id:"target_tahun_ini", type:"checkbox", q:"Target saya di kelas IX D tahun ini:", options:["Nilai rata-rata meningkat","Meraih prestasi / lomba","Aktif berorganisasi","Lolos ke sekolah tujuan","Membuat orang tua bangga"], required:true},
+    {id:"cara_mencapai_target", type:"textarea", q:"Apa yang akan kamu lakukan supaya target itu tercapai?"},
+  ]},
+  { tag:"11", title:"Kondisi Khusus", desc:"Bagian ini bersifat rahasia dan hanya akan dibaca oleh wali kelas, agar kami bisa membantumu dengan tepat.", confidential:true, fields:[
+    {id:"kondisi_khusus", type:"checkbox", q:"Apakah ada hal berikut yang perlu diketahui wali kelas?", options:["Kondisi kesehatan tertentu","Kesulitan belajar tertentu","Masalah keluarga","Kondisi pekerjaan orang tua yang memengaruhi sekolah","Tidak ada","Lainnya"]},
+    {id:"kondisi_khusus_detail", type:"textarea", q:"Jika perlu, ceritakan sedikit lebih detail (boleh dikosongkan)"},
+  ]},
+  { tag:"12", title:"Refleksi Diri", desc:"Coba jujur pada dirimu sendiri — tidak akan dinilai benar atau salah.", fields:[
+    {id:"kelebihan", type:"textarea", q:"Sebutkan 3 kelebihanmu", required:true},
+    {id:"hal_diperbaiki", type:"textarea", q:"Sebutkan 3 hal yang masih ingin kamu perbaiki", required:true},
+    {id:"ketakutan_kelas9", type:"textarea", q:"Apa yang paling kamu takutkan di kelas IX?"},
+  ]},
+  { tag:"13", title:"Masa Depan", desc:"Karena tahun ini kamu akan lulus dari SMP.", fields:[
+    {id:"rencana_lulus", type:"radio", q:"Setelah lulus, kamu ingin melanjutkan ke...", options:["SMK","SMA","MA","Pesantren","Belum tahu"], required:true},
+    {id:"jurusan_pilihan", type:"text", q:"Jika SMK: jurusan apa? Jika SMA/MA: sekolah tujuan mana?"},
+    {id:"pihak_pemengaruh", type:"text", q:"Siapa yang paling memengaruhi pilihanmu?"},
+  ]},
+  { tag:"14", title:"Komitmen Kelas", desc:"Satu janji untuk dirimu sendiri selama menjadi siswa 9D.", fields:[
+    {id:"komitmen_kelas", type:"textarea", q:"Tuliskan satu komitmen yang akan kamu pegang selama menjadi siswa kelas IX D", required:true},
+  ]},
+  { tag:"15", title:"Surat Rahasia", desc:"Ini pertanyaan terakhir, dan bersifat rahasia — hanya wali kelas yang membaca.", confidential:true, fields:[
+    {id:"surat_rahasia", type:"textarea", q:"Jika kamu boleh menyampaikan satu hal kepada wali kelas tanpa diketahui temanmu, apa yang ingin kamu sampaikan?"},
+  ]},
+];
+
+const FREQ_OPTIONS = ["Tidak pernah","Jarang","Kadang-kadang","Sering"];
+const TOTAL_STEPS = SECTIONS.length; // intro = step -1, outro = step TOTAL_STEPS
+const STORAGE_KEY = "peta9d_draft_v1";
+
+let current = -1; // -1 = intro screen
+let answers = {};
+
+/* ============ LOAD DRAFT ============ */
+try{
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if(saved) answers = JSON.parse(saved);
+}catch(e){}
+
+function saveDraft(){
+  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(answers)); }catch(e){}
+}
+
+/* ============ PATH RENDER ============ */
+function renderPath(){
+  const track = document.getElementById("pathTrack");
+  track.innerHTML = "";
+  for(let i=0;i<TOTAL_STEPS;i++){
+    const stop = document.createElement("div");
+    stop.className = "stop" + (i<current?" done":"") + (i===current?" active":"");
+    stop.textContent = i+1;
+    track.appendChild(stop);
+    if(i<TOTAL_STEPS-1){
+      const conn = document.createElement("div");
+      conn.className = "connector" + (i<current?" done":"");
+      track.appendChild(conn);
+    }
+  }
+  const label = document.getElementById("pathLabel");
+  if(current<0) label.textContent = "Mulai — 15 langkah singkat";
+  else if(current>=TOTAL_STEPS) label.textContent = "Selesai";
+  else label.textContent = `Langkah ${current+1} dari ${TOTAL_STEPS}`;
+}
+
+/* ============ FIELD RENDERERS ============ */
+function fieldHTML(f){
+  const val = answers[f.id];
+  const req = f.required ? '<span class="required-mark">*</span>' : '';
+  let inner = "";
+  if(["text","tel","time","number"].includes(f.type)){
+    inner = `<input type="${f.type}" id="${f.id}" value="${val ? escapeHtml(val) : ''}">`;
+  } else if(f.type === "textarea"){
+    inner = `<textarea id="${f.id}">${val ? escapeHtml(val) : ''}</textarea>`;
+  } else if(f.type === "radio"){
+    inner = '<div class="options">' + f.options.map(opt => `
+      <label class="opt ${val===opt?'checked':''}">
+        <input type="radio" name="${f.id}" value="${escapeHtml(opt)}" ${val===opt?'checked':''}>
+        <span>${opt}</span>
+      </label>`).join('') + '</div>';
+  } else if(f.type === "checkbox"){
+    const arr = Array.isArray(val) ? val : [];
+    inner = '<div class="options">' + f.options.map(opt => `
+      <label class="opt ${arr.includes(opt)?'checked':''}">
+        <input type="checkbox" name="${f.id}" value="${escapeHtml(opt)}" ${arr.includes(opt)?'checked':''}>
+        <span>${opt}</span>
+      </label>`).join('') + '</div>';
+  } else if(f.type === "scale"){
+    inner = `<div class="scale-row">` + [1,2,3,4,5].map(n => `
+      <div class="scale-btn ${val==n?'checked':''}" data-val="${n}" data-id="${f.id}">${n}</div>
+    `).join('') + `</div>
+    <div class="scale-labels"><span>Sangat tidak setuju</span><span>Sangat setuju</span></div>`;
+  } else if(f.type === "freq"){
+    inner = '<div class="options">' + FREQ_OPTIONS.map(opt => `
+      <label class="opt ${val===opt?'checked':''}">
+        <input type="radio" name="${f.id}" value="${opt}" ${val===opt?'checked':''}>
+        <span>${opt}</span>
+      </label>`).join('') + '</div>';
+  }
+  return `<div class="field">
+    <label class="q">${f.q} ${req}</label>
+    ${f.hint ? `<div class="hint">${f.hint}</div>` : ''}
+    ${inner}
+  </div>`;
+}
+
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+/* ============ SCREEN RENDER ============ */
+function renderScreen(){
+  const card = document.getElementById("card");
+  renderPath();
+
+  if(current === -1){
+    card.innerHTML = `
+      <div class="screen-center">
+        <span class="eyebrow" style="color:var(--teal)">Sebelum mulai</span>
+        <h2>Halo! Ini bukan ulangan 📝</h2>
+        <p>Kuesioner ini berisi ${TOTAL_STEPS} bagian singkat tentang dirimu — mulai dari data diri, cara belajar, sampai harapanmu untuk tahun ini. Jawaban jujurmu akan membantu wali kelas mendampingimu lebih baik sepanjang tahun.</p>
+        <div class="badge-list">
+          <span class="badge">± 10–15 menit</span>
+          <span class="badge">Tidak ada jawaban salah</span>
+          <span class="badge">Sebagian bersifat rahasia</span>
+        </div>
+      </div>
+      <div class="nav-row" style="justify-content:center;">
+        <button class="btn-primary" id="startBtn">Mulai Isi Kuesioner →</button>
+      </div>`;
+    document.getElementById("startBtn").onclick = () => { current = 0; renderScreen(); };
+    return;
+  }
+
+  if(current === TOTAL_STEPS){
+    card.innerHTML = `
+      <div class="screen-center">
+        <div class="success-icon">✓</div>
+        <h2 id="outroTitle">Mengirim jawabanmu...</h2>
+        <p id="outroText">Mohon tunggu sebentar.</p>
+      </div>`;
+    submitAnswers();
+    return;
+  }
+
+  const section = SECTIONS[current];
+  let html = `<span class="section-tag">Bagian ${section.tag} / ${TOTAL_STEPS}</span>
+    <h2>${section.title}</h2>
+    <p class="section-desc">${section.desc}</p>`;
+  if(section.confidential){
+    html += `<div class="confidential">🔒 Rahasia — hanya dibaca wali kelas</div>`;
+  }
+  section.fields.forEach(f => html += fieldHTML(f));
+  html += `<div class="nav-row">
+      <button class="btn-ghost" id="backBtn" ${current===0?'style="visibility:hidden"':''}>← Kembali</button>
+      <button class="btn-primary" id="nextBtn">${current===TOTAL_STEPS-1 ? 'Kirim Jawaban →' : 'Lanjut →'}</button>
+    </div>
+    <div class="status-msg" id="statusMsg"></div>`;
+  card.innerHTML = html;
+
+  bindFieldEvents(section);
+
+  document.getElementById("backBtn").onclick = () => { current--; renderScreen(); window.scrollTo({top:0,behavior:'smooth'}); };
+  document.getElementById("nextBtn").onclick = () => {
+    if(validateSection(section)){
+      current++;
+      renderScreen();
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+  };
+}
+
+function bindFieldEvents(section){
+  section.fields.forEach(f => {
+    if(["text","tel","time","number"].includes(f.type)){
+      document.getElementById(f.id).addEventListener("input", e => { answers[f.id] = e.target.value; saveDraft(); });
+    } else if(f.type === "textarea"){
+      document.getElementById(f.id).addEventListener("input", e => { answers[f.id] = e.target.value; saveDraft(); });
+    } else if(f.type === "radio" || f.type === "freq"){
+      document.querySelectorAll(`input[name="${f.id}"]`).forEach(inp => {
+        inp.addEventListener("change", e => {
+          answers[f.id] = e.target.value;
+          saveDraft();
+          document.querySelectorAll(`input[name="${f.id}"]`).forEach(i2 => i2.closest('.opt').classList.toggle('checked', i2.checked));
+        });
+      });
+    } else if(f.type === "checkbox"){
+      document.querySelectorAll(`input[name="${f.id}"]`).forEach(inp => {
+        inp.addEventListener("change", () => {
+          const checked = Array.from(document.querySelectorAll(`input[name="${f.id}"]:checked`)).map(i => i.value);
+          answers[f.id] = checked;
+          saveDraft();
+          document.querySelectorAll(`input[name="${f.id}"]`).forEach(i2 => i2.closest('.opt').classList.toggle('checked', i2.checked));
+        });
+      });
+    } else if(f.type === "scale"){
+      document.querySelectorAll(`.scale-btn[data-id="${f.id}"]`).forEach(btn => {
+        btn.addEventListener("click", () => {
+          answers[f.id] = parseInt(btn.dataset.val);
+          saveDraft();
+          document.querySelectorAll(`.scale-btn[data-id="${f.id}"]`).forEach(b => b.classList.toggle('checked', b===btn));
+        });
+      });
+    }
+  });
+}
+
+function validateSection(section){
+  for(const f of section.fields){
+    if(f.required){
+      const v = answers[f.id];
+      const empty = v===undefined || v===null || v==='' || (Array.isArray(v) && v.length===0);
+      if(empty){
+        const msg = document.getElementById("statusMsg");
+        msg.className = "status-msg error";
+        msg.textContent = "Mohon lengkapi pertanyaan bertanda * sebelum melanjutkan.";
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+/* ============ SUBMIT ============ */
+function submitAnswers(){
+  answers.waktu_pengisian = new Date().toISOString();
+
+  if(!CONFIG.SCRIPT_URL || CONFIG.SCRIPT_URL.includes("TEMPEL_URL")){
+    document.getElementById("outroTitle").textContent = "Belum terhubung ke Google Sheet";
+    document.getElementById("outroText").innerHTML = "Wali kelas belum menghubungkan formulir ini ke Google Sheet. Jawabanmu tersimpan sementara di perangkat ini.";
+    return;
+  }
+
+  fetch(CONFIG.SCRIPT_URL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body: JSON.stringify(answers)
+  }).then(() => {
+    localStorage.removeItem(STORAGE_KEY);
+    document.getElementById("outroTitle").textContent = "Terima kasih! 🎉";
+    document.getElementById("outroText").textContent = "Jawabanmu sudah tersimpan. Wali kelas akan membaca semua jawaban dengan baik, termasuk bagian yang rahasia.";
+  }).catch(() => {
+    document.getElementById("outroTitle").textContent = "Gagal mengirim";
+    document.getElementById("outroText").innerHTML = "Sepertinya koneksi internet bermasalah. Jawabanmu tetap tersimpan di perangkat ini — coba tekan tombol di bawah untuk mengirim ulang.";
+    const card = document.getElementById("card");
+    card.insertAdjacentHTML("beforeend", `<div class="nav-row" style="justify-content:center;"><button class="btn-primary" id="retryBtn">Coba Kirim Lagi</button></div>`);
+    document.getElementById("retryBtn").onclick = submitAnswers;
+  });
+}
+
+renderScreen();
+</script>
+</body>
+</html>
